@@ -47,7 +47,7 @@ class MecEnviroment(Env):
 
     def reset(self):
         self.p= np.zeros((self.M, self.N))
-        self.p= np.insert(p, 0, 1, axis=1)
+        self.p= np.insert(self.p, 0, 1, axis=1)
         # self.c = pd.read_csv(self.cDir).to_numpy()[0]
         # self.d = pd.read_csv(self.dDir).to_numpy()[0]
         # f = pd.read_csv(self.fDir).to_numpy()[0]
@@ -58,8 +58,8 @@ class MecEnviroment(Env):
 
         
     def step(self, action):
-        randomM = random.randint(0,9)
-        randomN = random.randint(1,10)
+        randomM = random.randint(0,self.M-1)
+        randomN = random.randint(1,self.N)
         if self.p[randomM][randomN] + action*0.01 >= 0 and self.p[randomM][0] - action*0.01 >= 0 :
             self.p[randomM][randomN] += action*0.01
             self.p[randomM][0] -= action*0.01
@@ -122,8 +122,8 @@ class MecEnviroment(Env):
 # p= np.zeros((10,10))
 # p= np.insert(p, 0, 1, axis=1)
 
-p=[]
-for i in range(10):
-    p.append(np.random.dirichlet(np.ones(10+1)))
-p = np.stack(p, axis=0)
+# p=[]
+# for i in range(10):
+#     p.append(np.random.dirichlet(np.ones(10+1)))
+# p = np.stack(p, axis=0)
 

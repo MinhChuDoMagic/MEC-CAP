@@ -15,7 +15,7 @@ M=10
 N=10
 
 model = Sequential()
-model.add(Flatten(input_shape=(1, 10, 12)))
+model.add(Flatten(input_shape=(1, M, N+1)))
 
 model.add(Dense(16, activation='relu'))
 model.add(Dense(32, activation='relu'))
@@ -27,7 +27,7 @@ model.summary()
 
 
 env = MecEnviroment(M,N)
-memory = SequentialMemory(limit=2000, window_length = 1)
+memory = SequentialMemory(limit=1000, window_length = 1)
 policy = EpsGreedyQPolicy(eps=0.8)
 dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory,
                target_model_update=200, policy=policy, batch_size = 200)
@@ -42,5 +42,6 @@ dqn.fit(env, nb_steps=999, visualize=False, verbose=2)
 # After training is done, we save the final weights.
 dqn.save_weights(f'dqn_weights.h5f', overwrite=True)
 
-# Finally, evaluate our algorithm for 5 episodes.
-dqn.test(env, nb_episodes=100, visualize=False)
+# # Finally, evaluate our algorithm for 5 episodes.
+# dqn.test(env, nb_episodes=100, visualize=False)
+

@@ -63,7 +63,8 @@ def makingData(M,N):
     pd.DataFrame(f0*pow(10,9)).to_csv(f0Dir,index=False)
     pd.DataFrame(r).to_csv(rDir,index=False)
 
-makingData(10,10)
-makingData(15,10)
-makingData(10,15)
+makingData(11,10)
+makingData(12,10)
+makingData(13,10)
+makingData(14,10)
 

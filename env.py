@@ -52,8 +52,8 @@ def calReward(M,N, timeslot, p):
                 e2 += k*p[i,j]*c[i]*(f[j]**2)
         l2 = max(l2,lm[i])
 
-    reward = 0.5*(500*(l1+l2)) ##+e1*10+e2/10
-    print(timeslot, reward) ##, l1, l2, e1*10, e2/10
+    reward = 0.5*(500*(l1+l2) +(e1*10+e2/10)/100) ##+e1*10+e2/10
+    print(reward) ##, l1, l2, e1*10, e2/10
     return -reward
 
 # p= np.zeros((10,10))
